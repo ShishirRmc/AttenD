@@ -146,3 +146,5 @@ function handleAllCardsSwiped() {
   body.appendChild(logo);
   body.appendChild(thankYouMessage);
 }
+
+// My first git commit
