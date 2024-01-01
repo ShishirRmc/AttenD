@@ -1,19 +1,24 @@
-*, *:before, *:after {
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  /* font-family: 'Roboto', sans-serif; */
 }
 
 body {
- background: hsla(189, 100%, 50%, 1);
+  background: hsla(189, 100%, 50%, 1);
 
-background: linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
+  background: linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
 
-background: -moz-linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
+  background: -moz-linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
 
-background: -webkit-linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
+  background: -webkit-linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
 
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00D9FF", endColorstr="#444FB3", GradientType=1 );
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#00D9FF", endColorstr="#444FB3", GradientType=1);
   overflow: hidden;
   font-family: sans-serif;
 }
@@ -44,10 +49,11 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00D9FF", en
 }
 
 .attend--status i {
+  font-family: 'FontAwesome', sans-serif;
   font-size: 100px;
   opacity: 0;
   -webkit-transform: scale(0.3);
-          transform: scale(0.3);
+  transform: scale(0.3);
   transition: all 0.2s ease-in-out;
   position: absolute;
   width: 100px;
@@ -57,45 +63,45 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00D9FF", en
 .attend_like .fa-heart {
   opacity: 0.7;
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .attend_nope .fa-remove {
   opacity: 0.7;
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .attend--cards {
   flex-grow: 1;
-  padding-top: 65px;
+  padding-top: 35px;
   text-align: center;
   display: flex;
   justify-content: center;
   /* align-items: flex-end; */
   z-index: 1;
+  font-family: 'FontAwesome', sans-serif;
 }
 
 .attend--card {
   display: inline-block;
-  width: 70vw;
-  max-width: 360px;
-  height: 50vh;
+  max-width: 22rem;
+  height: 30rem;
   background-color: #ffffff;
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F81919", endColorstr="#DF6230", GradientType=1 );
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#F81919", endColorstr="#DF6230", GradientType=1);
 
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#070200", endColorstr="#000000", GradientType=1 );
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#070200", endColorstr="#000000", GradientType=1);
   padding-bottom: 40px;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
   position: absolute;
   will-change: transform;
   transition: all 0.3s ease-in-out;
   cursor: -webkit-grab;
   cursor: grab;
-  border-left: 2px inset rgba(28,110,164,0.29);
-  border-right: 2px inset rgba(28,110,164,0.29);
-  border-bottom: 5px inset rgba(28,110,164,0.29);
+  border-left: 2px inset rgba(28, 110, 164, 0.29);
+  border-right: 2px inset rgba(28, 110, 164, 0.29);
+  border-bottom: 5px inset rgba(28, 110, 164, 0.29);
 }
 
 .moving.attend--card {
@@ -105,23 +111,27 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#070200", en
 }
 
 .attend--card img {
-  max-width: 100%;
+  width: 20rem;
+  height: 15rem;
+
   pointer-events: none;
+  object-fit: cover;
+  margin-top: 1rem;
+  border-radius: 8px;
+
 }
 
 .attend--card h3 {
   font-size: 25px;
-  padding: 0 16px;
+  padding: 1rem;
+  margin-top: 1rem;
   pointer-events: none;
+  font-weight: bold;
 }
 
 .attend--card p {
-  margin-top: 15px;
-  font-size: 17px;
-  padding: 0 16px;
-  font-weight:bold;
+  padding: 0 1rem 0;
   pointer-events: none;
-  color: rgb(0, 0, 0);
 }
 
 .attend--buttons {
@@ -157,11 +167,10 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#070200", en
   color: #7097b6;
 }
 
-img {
-  margin: 5px;
-  padding-right: 8px;
- border: 2px groove rgba(31, 148, 225, 0.861);
-} 
+.fa-undo {
+  color: #FFD700;
+}
+
 /*logo*/
 .logo {
 
@@ -172,8 +181,8 @@ img {
 
 .logo img {
   max-width: 100%;
-  height: 100px;
- 
+  height: 50px;
+
   margin: 0 auto;
   border: 0px;
 }
@@ -183,7 +192,7 @@ img {
     padding: 10px 0;
   }
 
- 
+
   .logo img {
     max-width: 80%;
   }

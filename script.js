@@ -13,12 +13,11 @@ function initCards(card, index) {
     card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
     card.style.opacity = (10 - index) / 10;
   });
-  
+
   attendContainer.classList.add('loaded');
 }
 
 initCards();
-
 allCards.forEach(function (el) {
   var hammertime = new Hammer(el);
 
@@ -95,3 +94,21 @@ var likeListener = createButtonListener(true);
 
 nope.addEventListener('click', nopeListener);
 like.addEventListener('click', likeListener);
+
+//
+
+var undo = document.getElementById('undo');
+var removedCardsStack = []; 
+
+undo.addEventListener('click', function(event) {
+  var removedCards = document.querySelectorAll('.attend--card.removed');
+  if (removedCards.length > 0) {
+    for (var i = removedCards.length - 1; i >= 0; i--) {
+      var removedCard = removedCards[i-];
+      removedCard.classList.remove('removed');
+      removedCard.style.transform = '';
+      removedCardsStack.pop();
+    }
+    initCards();
+  }
+});
