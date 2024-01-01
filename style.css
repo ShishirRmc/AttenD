@@ -6,23 +6,29 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  /* font-family: 'Roboto', sans-serif; */
+  
 }
 
 body {
   background: hsla(189, 100%, 50%, 1);
-
   background: linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
 
   background: -moz-linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
-
   background: -webkit-linear-gradient(225deg, hsla(189, 100%, 50%, 1) 0%, hsla(234, 45%, 48%, 1) 100%);
+
+  /* background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
 
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#00D9FF", endColorstr="#444FB3", GradientType=1);
   overflow: hidden;
-  font-family: sans-serif;
 }
-
+.logo {
+  text-align: center;
+  /* background-color: red; */
+}
+.logo img {
+  height: 5rem;
+}
 .attend {
   width: 100vw;
   height: 100vh;
@@ -73,14 +79,13 @@ body {
 }
 
 .attend--cards {
-  flex-grow: 1;
-  padding-top: 35px;
+  /* background-color: yellow; */
   text-align: center;
   display: flex;
   justify-content: center;
-  /* align-items: flex-end; */
-  z-index: 1;
-  font-family: 'FontAwesome', sans-serif;
+  padding-top: 3rem;
+  height: 34rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 .attend--card {
@@ -89,9 +94,7 @@ body {
   height: 30rem;
   background-color: #ffffff;
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#F81919", endColorstr="#DF6230", GradientType=1);
-
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#070200", endColorstr="#000000", GradientType=1);
-  padding-bottom: 40px;
   border-radius: 16px;
   overflow: hidden;
   position: absolute;
@@ -135,9 +138,8 @@ body {
 }
 
 .attend--buttons {
-  flex: 0 0 207px;
-  text-align: center;
-  padding-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .attend--buttons button {
@@ -169,31 +171,4 @@ body {
 
 .fa-undo {
   color: #FFD700;
-}
-
-/*logo*/
-.logo {
-
-  text-align: center;
-  padding: 20px 0;
-}
-
-
-.logo img {
-  max-width: 100%;
-  height: 50px;
-
-  margin: 0 auto;
-  border: 0px;
-}
-
-@media screen and (max-width: 768px) {
-  .logo-container {
-    padding: 10px 0;
-  }
-
-
-  .logo img {
-    max-width: 80%;
-  }
 }
