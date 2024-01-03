@@ -50,6 +50,8 @@ col2.metric("Average Age", "average", "-8%")
 col3.metric("Response Rate", "86%", "4%")
 c1, c2 = st.columns((7,3))
 
+#row B
+
 # with c1:
 #     # Add your heatmap here
 #     st.markdown('### Heatmap')
@@ -58,7 +60,6 @@ c1, c2 = st.columns((7,3))
 #                     height=400,
 #                     color_continuous_scale='BUGN')
 #     st.plotly_chart(Heat, use_container_width=True)
-
 
 
 with c2:

@@ -1,25 +1,65 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
+import plost
 
-logo = '<img style="width: 100px; position: absolute; top: 10px; right: 10px;" src="https://i.postimg.cc/FKqWr8BN/logo-attend.png">'
-st.markdown(logo, unsafe_allow_html= True)
+st.set_page_config(layout='wide', initial_sidebar_state='expanded')
 
-title = '<h1 style="font-family: Roboto; color:white; font-size: 55px; text-align: center">AttenD - A data analysis Tool </h1>'
-st.markdown(title, unsafe_allow_html=True)
+# with open('style.css') as f:
+#     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    
+st.sidebar.header('Dashboard `version 2`')
 
-# Set the background image
-img = """
-<style>
-[data-testid="stAppViewContainer"] > .main {
-   background: hsla(0, 0%, 85%, 1);
+st.sidebar.subheader('Heat map parameter')
+time_hist_color = st.sidebar.selectbox('Color by', ('temp_min', 'temp_max')) 
 
-background: linear-gradient(0deg, hsla(0, 0%, 85%, 1) 0%, hsla(191, 88%, 13%, 1) 0%, hsla(77, 33%, 92%, 1));
+st.sidebar.subheader('Donut chart parameter')
+donut_theta = st.sidebar.selectbox('Select data', ('q2', 'q3'))
 
-background: -moz-linear-gradient(0deg, hsla(0, 0%, 85%, 1) 0%, hsla(191, 88%, 13%, 1) 0%, hsla(77, 33%, 92%, 1));
+st.sidebar.subheader('Line chart parameters')
+plot_data = st.sidebar.multiselect('Select data', ['temp_min', 'temp_max'], ['temp_min', 'temp_max'])
+plot_height = st.sidebar.slider('Specify plot height', 200, 500, 250)
 
-background: -webkit-linear-gradient(0deg, hsla(0, 0%, 85%, 1) 0%, hsla(191, 88%, 13%, 1) 0%, hsla(77, 33%, 92%, 1));
+st.sidebar.markdown('''
+---
+Created with ❤️ by [Data Professor](https://youtube.com/dataprofessor/).
+''')
 
-</style>
-"""
-st.markdown(img, unsafe_allow_html=True)
+
+# Row A
+st.markdown('### Metrics')
+col1, col2, col3 = st.columns(3)
+col1.metric("Temperature", "70 °F", "1.2 °F")
+col2.metric("Wind", "9 mph", "-8%")
+col3.metric("Humidity", "86%", "4%")
+
+# Row B
+seattle_weather = pd.read_csv('https://raw.githubusercontent.com/tvst/plost/master/data/seattle-weather.csv', parse_dates=['date'])
+stocks = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/stocks_toy.csv')
+
+c1, c2 = st.columns((7,3))
+
+with c1:
+    st.markdown('### Heatmap')
+    plost.time_hist(
+    data=seattle_weather,
+    date='date',
+    x_unit='week',
+    y_unit='day',
+    color=time_hist_color,
+    aggregate='median',
+    legend=None,
+    height=345,
+    use_container_width=True)
+    
+with c2:
+    st.markdown('### Donut chart')
+    plost.donut_chart(
+        data=stocks,
+        theta=donut_theta,
+        color='company',
+        legend='bottom', 
+        use_container_width=True)
+
+# Row C
+st.markdown('### Line chart')
+st.line_chart(seattle_weather, x = 'date', y = plot_data, height = plot_height)
