@@ -20,11 +20,16 @@ body {
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
 }
 .logo {
+  /* margin-top: 3rem; */
   text-align: center;
   /* background-color: red; */
 }
 .logo img {
   height: 5rem;
+}
+#logo.increased-size {
+  margin-top: 5rem;
+  height: 10rem;
 }
 .attend {
   width: 100vw;
@@ -88,7 +93,7 @@ body {
 .attend--card {
   display: inline-block;
   max-width: 22rem;
-  height: 30rem;
+  height: 28.5rem;
   background-color: #ffffff;
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#F81919", endColorstr="#DF6230", GradientType=1);
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#070200", endColorstr="#000000", GradientType=1);
@@ -168,4 +173,16 @@ body {
 
 .fa-undo {
   color: #FFD700;
+}
+.thank-you {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: 'Roboto', 'sans-serif';
+  color: white;
+  width: 22rem;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

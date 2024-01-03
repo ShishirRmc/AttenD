@@ -7,6 +7,9 @@ import plotly.graph_objects as go
 
 st.set_page_config(layout='wide', initial_sidebar_state='expanded')
 
+with open('style.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 st.markdown(
     """
     <style>
@@ -41,8 +44,8 @@ donut_theta = st.sidebar.selectbox('Select data', ('q2', 'q3'))
 
 
 
-stall_data = pd.read_csv('stall_data.csv')
-user_data = pd.read_csv('user_data.csv')
+stall_data = pd.read_csv('./Data/stall_data.csv')
+user_data = pd.read_csv('./Data/user_data.csv')
 
 # Row A
 st.markdown('### Metrics')
@@ -69,7 +72,32 @@ c1, c2 = st.columns((7,3))
 #                     color_continuous_scale='BUGN')
 #     st.plotly_chart(Heat, use_container_width=True)
 
+#ROW B
 
+with c1:
+
+    st.markdown('### BarChart Diagram')
+    Bar = st.columns(1)
+    likes_bar = go.Bar(
+        x=stall_data['StallName'],
+        y=stall_data['Likes'],
+        name='Likes',
+        marker_color='blue'
+    )
+
+    Dislikes_bar = go.Bar(
+        x=stall_data['StallName'],
+        y=stall_data['Dislikes'],
+        name='Dislikes',
+        marker_color='red'
+    )
+    data = [likes_bar, Dislikes_bar]
+    layout = go.Layout(
+        title='Likes and Dislikes for Each Stall',
+        barmode='stack'
+    )
+    fig = go.Figure(data=data, layout=layout)
+    st.plotly_chart(fig)
 
 with c2:
     # Add your pie chart here
@@ -77,6 +105,7 @@ with c2:
     likes_sum = stall_data.groupby('Department')['Likes'].sum().reset_index()
     colors = ['#05c793', '#ffb60a', '#1d3557']
     pie = px.pie(likes_sum, values='Likes', names='Department', color_discrete_sequence=colors, width=400, height=400)
+    pie.update_layout(template="plotly")
     st.plotly_chart(pie, use_container_width=True)
 
 

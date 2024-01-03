@@ -16,6 +16,10 @@ function initCards(card, index) {
   });
 
   attendContainer.classList.add("loaded");
+
+  if (document.querySelectorAll(".attend--card:not(.removed)").length === 0) {
+    handleAllCardsSwiped();
+  }
 }
 
 initCards();
@@ -135,16 +139,24 @@ undo.addEventListener("click", function (event) {
 });
 
 function handleAllCardsSwiped() {
-  // Remove everything except the logo and show the thank-you message
-  var body = document.body;
-  body.innerHTML = ""; // Remove all existing content
+  // Remove all cards
+  var cardsContainer = document.querySelector(".attend--cards");
+  cardsContainer.innerHTML = ""; // Remove all cards
 
-  var logo = document.querySelector(".logo");
-  var thankYouMessage = document.querySelector(".thank-you");
+  // Remove the buttons
+  var buttonsContainer = document.querySelector(".attend--buttons");
+  buttonsContainer.innerHTML = ""; // Remove all buttons
 
-  // Add the logo and thank-you message to the body
-  body.appendChild(logo);
-  body.appendChild(thankYouMessage);
+  // Display the thank-you message
+  var attendContainer = document.querySelector(".attend");
+
+  var thankYouMessage = document.createElement("div");
+  thankYouMessage.classList.add("thank-you");
+  thankYouMessage.textContent = "Thank you for attending the expo! 😊";
+
+  // Append the thank-you message to the .attend container
+  attendContainer.appendChild(thankYouMessage);
+
+  var logo = document.getElementById("logo");
+  logo.classList.add("increased-size");
 }
-
-// My first git commit
