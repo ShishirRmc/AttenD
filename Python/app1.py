@@ -7,6 +7,16 @@ import plotly.graph_objects as go
 
 st.set_page_config(layout='wide', initial_sidebar_state='expanded')
 
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: #5CDB95;  # Replace with your preferred color
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 st.sidebar.header('AttenD `- A data analysis tool`')
 
@@ -50,8 +60,6 @@ col2.metric("Average Age", "average", "-8%")
 col3.metric("Response Rate", "86%", "4%")
 c1, c2 = st.columns((7,3))
 
-#row B
-
 # with c1:
 #     # Add your heatmap here
 #     st.markdown('### Heatmap')
@@ -62,12 +70,14 @@ c1, c2 = st.columns((7,3))
 #     st.plotly_chart(Heat, use_container_width=True)
 
 
+
 with c2:
-    st.markdown('### Donut chart')
+    # Add your pie chart here
+    st.markdown('### Pie chart')
     likes_sum = stall_data.groupby('Department')['Likes'].sum().reset_index()
     colors = ['#05c793', '#ffb60a', '#1d3557']
-    donut = px.pie(likes_sum, values='Likes', names='Department', color_discrete_sequence=colors, hole=.3, width=400, height=400)
-    st.plotly_chart(donut, use_container_width=True)
+    pie = px.pie(likes_sum, values='Likes', names='Department', color_discrete_sequence=colors, width=400, height=400)
+    st.plotly_chart(pie, use_container_width=True)
 
 
 # Row C
@@ -92,7 +102,7 @@ total_registrations['Gender'] = 'Total'
 
 final_data = pd.concat([user_data_filtered, total_registrations])
 
-colors = {'Male': '#ffffff', 'Female': '#e63946', 'Total': '#00f5d4'}
+colors = {'Male': 'blue', 'Female': 'pink', 'Total': 'green'}
 
 fig = px.line(final_data, x='RegTime', y='CountoftheUser', color='Gender', title='Event Registration Over Time', height=plot_height*10, color_discrete_map=colors)
 
